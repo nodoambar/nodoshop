@@ -5,6 +5,7 @@ class Hola
 {
     public function saludar(): void
     {
-        echo "Hola!";
+        $peticion = new Peticion();
+        $peticion->ejecutar();
     }
 }
