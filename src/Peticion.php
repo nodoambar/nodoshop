@@ -11,7 +11,8 @@ class Peticion
     public function ejecutar(): array
     {
         $url = "https://demoelectrica.nodogestion.com/api/operaciones/listado";
-        $token = "de372929-82bc-e2a4-02c4-0ec08ee3a60d";
+        //$token = "de372929-82bc-e2a4-02c4-0ec08ee3a60d";
+        $token = "b7eebd1c-4519-40f9-8036-9403be561420";
 
         /*
         $postdata = http_build_query([

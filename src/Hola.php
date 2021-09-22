@@ -3,9 +3,9 @@ namespace NodoShop;
 
 class Hola
 {
-    public function saludar(): void
+    public function saludar()
     {
         $peticion = new Peticion();
-        $peticion->ejecutar();
+        return $peticion->ejecutar();
     }
 }
