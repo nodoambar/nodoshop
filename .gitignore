@@ -17,3 +17,4 @@ Thumbs.db
 /.php_cs.cache
 /dumps
 /.phpunit.*
+/test.php
