@@ -11,7 +11,7 @@ class Conector
 
     }
 
-    public function productos(string $buscar = "", string $orden = "ASC", int $registros = 0, int $pagina = 0): array
+    public function productos(string $buscar = "", string $orden = "ASC", int $registros = 0, int $pagina = 0): Resultado
     {
         if ($registros < 0) {
             $registros = 0;
@@ -22,11 +22,35 @@ class Conector
 
         $params = [
             "q" => $buscar,
-            "orden" => $orden,
+            "order" => $orden,
             "registros" => $registros,
-            "pagina" => $pagina,
+            "page" => $pagina,
         ];
 
-        return $this->peticion->ejecutarGet("api/productos", $params)->datos;
+        $peticion = $this->peticion->ejecutarGet("api/catalogo/productos", $params)->datos;
+
+        return new Resultado(
+            $peticion["header"]["page"],
+            $peticion["header"]["records"],
+            $peticion["header"]["total_records"],
+            $peticion["data"],
+        );
+    }
+
+    public function familias(string $buscar = "", string $orden = "ASC"): Resultado
+    {
+        $params = [
+            "q" => $buscar,
+            "order" => $orden,
+        ];
+
+        $peticion = $this->peticion->ejecutarGet("api/catalogo/familias", $params)->datos;
+
+        return new Resultado(
+            $peticion["header"]["page"],
+            $peticion["header"]["records"],
+            $peticion["header"]["total_records"],
+            $peticion["data"],
+        );
     }
 }
