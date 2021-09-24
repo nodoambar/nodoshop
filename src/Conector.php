@@ -53,4 +53,21 @@ class Conector
             $peticion["data"],
         );
     }
+
+    public function marcas(string $buscar = "", string $orden = "ASC"): Resultado
+    {
+        $params = [
+            "q" => $buscar,
+            "order" => $orden,
+        ];
+
+        $peticion = $this->peticion->ejecutarGet("api/catalogo/marcas", $params)->datos;
+
+        return new Resultado(
+            $peticion["header"]["page"],
+            $peticion["header"]["records"],
+            $peticion["header"]["total_records"],
+            $peticion["data"],
+        );
+    }
 }
