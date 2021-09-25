@@ -48,6 +48,11 @@ class Conector
         );
     }
 
+    public function familia(int $id): array
+    {
+        return $this->peticion->ejecutarGet("api/catalogo/familia/{$id}")->datos;
+    }
+
     public function familias(string $buscar = "", string $orden = "ASC"): Resultado
     {
         $params = [
