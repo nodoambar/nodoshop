@@ -8,7 +8,11 @@ class Conector
     public function __construct(string $alias, string $token)
     {
         $this->peticion = new Peticion($alias, $token);
+    }
 
+    public function producto(int $id): array
+    {
+        return $this->peticion->ejecutarGet("api/catalogo/producto/{$id}")->datos;
     }
 
     public function productos(string $buscar = "", string $orden = "ASC", int $registros = 0, int $pagina = 0): Resultado

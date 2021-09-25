@@ -14,7 +14,7 @@ class Peticion
         $this->token = $token;
     }
 
-    public function ejecutarGet(string $endpoint, array $params): Respuesta
+    public function ejecutarGet(string $endpoint, array $params = []): Respuesta
     {
         //$url = "https://demoelectrica.nodogestion.com/api/operaciones/listado";
         //$token = "de372929-82bc-e2a4-02c4-0ec08ee3a60d";
