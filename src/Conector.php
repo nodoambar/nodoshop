@@ -15,6 +15,12 @@ class Conector
         return $this->peticion->ejecutarGet("api/catalogo/producto/{$id}")->datos;
     }
 
+    public function productoSlug(string $slug): array
+    {
+        $id = explode("-", $slug)[0];
+        return $this->producto($id);
+    }
+
     public function productos(string $buscar = "", string $orden = "ASC", int $registros = 0, int $pagina = 0): Resultado
     {
         if ($registros < 0) {
