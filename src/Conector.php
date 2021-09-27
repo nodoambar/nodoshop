@@ -21,7 +21,7 @@ class Conector
         return $this->producto($id);
     }
 
-    public function productos(string $buscar = "", int $id_familia = 0, string $orden = "ASC", int $registros = 0, int $pagina = 0): Resultado
+    public function productos(Criterio $criterio, int $id_familia = 0, string $orden = "ASC", int $registros = 0, int $pagina = 0): Resultado
     {
         if ($registros < 0) {
             $registros = 0;
@@ -30,13 +30,12 @@ class Conector
             $pagina = 0;
         }
 
-        $params = [
-            "q" => $buscar,
+        $params = array_merge($criterio->toArray(), [
             "id_familia" => $id_familia,
             "order" => $orden,
-            "registros" => $registros,
+            "limit" => $registros,
             "page" => $pagina,
-        ];
+        ]);
 
         $peticion = $this->peticion->ejecutarGet("api/catalogo/productos", $params)->datos;
 
