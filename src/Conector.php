@@ -44,6 +44,7 @@ class Conector
             $peticion["header"]["records"],
             $peticion["header"]["total_records"],
             $peticion["data"],
+            $peticion["metadata"],
         );
     }
 
