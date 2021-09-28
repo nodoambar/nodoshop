@@ -69,10 +69,11 @@ class Conector
         );
     }
 
-    public function marcas(string $buscar = "", string $orden = "ASC"): Resultado
+    public function marcas(string $buscar = "", int $id_familia = 0, string $orden = "ASC"): Resultado
     {
         $params = [
             "q" => $buscar,
+            "id_familia" => $id_familia,
             "order" => $orden,
         ];
 
